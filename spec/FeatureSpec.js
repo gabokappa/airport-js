@@ -15,6 +15,7 @@ describe('Feature Test:', function(){
   var plane;
   var airport;
 
+
   beforeEach(function() {
     plane = new Plane();
     airport = new Airport();
@@ -32,15 +33,26 @@ describe('Feature Test:', function(){
 
     it('planes can be instructed to takeoff', function(){
       plane.land(airport);
-      plane.takeoff();
+      plane.takeoff(airport);
       expect(airport.planes()).not.toContain(plane);
+    });
+
+    it('throws and error if the hangar has reached capacity', function(){
+      plane.land(airport);
+      var plane2 = new Plane;
+      plane2.land(airport);
+      var plane3 = new Plane;
+      plane3.land(airport);
+      var plane4 = new Plane;
+      expect(function() {plane4.land(airport);}).toThrowError("Hangar full");
     });
   });
 
   it('plane cannot takeoff if weather is stormy', function(){
+    spyOn(Math,'random').and.returnValue(0);
     plane.land(airport);
     spyOn(airport, 'isStormy').and.returnValue(true);
-    expect(function() {plane.takeoff();}).toThrowError("Cannot takeoff due to weather");
+    expect(function() {plane.takeoff(airport);}).toThrowError("Cannot takeoff due to weather");
     expect(airport.planes()).toContain(plane);
   });
 
@@ -49,4 +61,7 @@ describe('Feature Test:', function(){
     expect(function() {plane.land(airport);}).toThrowError("Cannot land due to weather");
     expect(airport.planes()).not.toContain(plane);
   });
+
+
+
 });

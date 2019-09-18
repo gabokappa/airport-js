@@ -3,7 +3,7 @@
 describe('Aiport', function(){
   var airport;
   var plane;
-  
+
   beforeEach(function(){
     airport = new Airport();
     plane = jasmine.createSpy('plane', ['land']);
@@ -39,9 +39,9 @@ describe('Aiport', function(){
     });
   });
 
-  it('plane can check for stormy conditions', function(){
-    expect(airport.isStormy()).toBeFalsy();
-  });
+  // it('plane can check for stormy conditions', function(){
+  //   expect(airport.isStormy()).toBeFalsy();
+  // });
 
   describe('under stormy conditions', function(){
     it('does not clear planes for takeoff', function(){
