@@ -6,6 +6,9 @@ function Airport(){
 Airport.prototype.planes = function(){ return this._hangar; };
 
 Airport.prototype.clearForLanding = function(plane){
+  if(this.isStormy()) {
+    throw new Error("Cannot land due to weather");
+  }
   this._hangar.push(plane);
 };
 
@@ -13,8 +16,7 @@ Airport.prototype.clearForTakeOff = function(plane){
   if(this.isStormy()) {
     throw new Error("Cannot takeoff due to weather");
   }
-  // this._hangar = [];
-  // this._hangar = this._hangar.filter()
+
   var index = this._hangar.indexOf(plane);
   if (index > -1) {
     this._hangar.splice(index, 1);
@@ -22,5 +24,10 @@ Airport.prototype.clearForTakeOff = function(plane){
 };
 
 Airport.prototype.isStormy = function() {
-  return false;
+  if (Math.random() > 0.8) {
+    return true;
+  } else {
+    return false;
+  }
+
 };
