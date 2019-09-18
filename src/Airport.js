@@ -1,8 +1,8 @@
 'use strict';
 
-function Airport(){
+function Airport(capacity = 3){
   this._hangar = [];
-  this._capacity = 3;
+  this._capacity = capacity;
 }
 Airport.prototype.planes = function(){ return this._hangar; };
 

@@ -40,13 +40,10 @@ describe('Aiport', function(){
 
     it('throws and error if the hangar has reached capacity', function(){
       airport.clearForLanding(plane);
-      console.log(airport._hangar)
       var plane2 = jasmine.createSpy('plane2', ['land']);
       airport.clearForLanding(plane2);
-      console.log(airport._hangar)
       var plane3 = jasmine.createSpy('plane3', ['land']);
       airport.clearForLanding(plane3);
-      console.log(airport._hangar)
       var plane4 = jasmine.createSpy('plane4', ['land']);
       expect(function() {airport.clearForLanding(plane4);}).toThrowError("Hangar full");
     });
