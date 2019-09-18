@@ -20,4 +20,20 @@ describe('Aiport', function(){
     airport.clearForTakeOff(plane);
     expect(airport.planes()).toEqual([]);
   });
+
+  // it('can clear a specific plane to takeoff', function(){
+  //   var plane2;
+  //   plane2 = jasmine.createSpy('plane2', ['land']);
+  //   airport.clearForLanding(plane);
+  //   airport.clearForLanding(plane2);
+  //   // console.log(airport.planes());
+  //   airport.clearForTakeOff(plane2);
+  //   // console.log(airport.planes());
+  //   console.log(plane);
+  //   console.log(plane2);
+  //   expect(airport.planes()).not.toContain(plane2);
+  //   expect(airport.planes()).toContain(plane);
+  //
+  // });
+
 });

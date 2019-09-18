@@ -11,4 +11,9 @@ Airport.prototype.clearForLanding = function(plane){
 
 Airport.prototype.clearForTakeOff = function(plane){
 this._hangar = [];
-};
+  // this._hangar = this._hangar.filter()
+  // var index = this._hangar.indexOf(plane);
+  // if (index > -1) {
+  //   this._hangar.splice(index, 1);
+  // };
+  };
