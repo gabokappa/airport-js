@@ -29,11 +29,20 @@ describe('Aiport', function(){
     // console.log(airport.planes());
     airport.clearForTakeOff(plane2);
     // console.log(airport.planes());
-    console.log(plane);
-    console.log(plane2);
     expect(airport.planes()).not.toContain(plane2);
     expect(airport.planes()).toContain(plane);
+  });
 
+  it('plane can check for stormy conditions', function(){
+    // spyOn(airport, 'weather').andReturn('stormy');
+    expect(airport.isStormy()).toBeFalsy();
+  });
+
+  describe('under stormy conditions', function(){
+    it('does not clear planes for takeoff', function(){
+      spyOn(airport, 'isStormy').and.returnValue(true);
+      expect(function(){ airport.clearForTakeOff(plane); }). toThrowError("Cannot takeoff due to weather");
+    });
   });
 
 });
